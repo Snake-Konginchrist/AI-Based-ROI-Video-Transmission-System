@@ -1,0 +1,4 @@
+opencv-python
+numpy
+pillow
+# 如果有其他依赖，请在此处添加
