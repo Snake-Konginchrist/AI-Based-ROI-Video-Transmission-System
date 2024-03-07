@@ -23,7 +23,7 @@
 ### 安装步骤
 1. 克隆仓库到本地：
    ```bash
-   git clone [项目仓库的URL]
+   git clone https://gitee.com/Snake-Konginchrist/AI-Based-ROI-Video-Transmission-System.git
    ```
 2. 安装所需的依赖包：
    ```bash
