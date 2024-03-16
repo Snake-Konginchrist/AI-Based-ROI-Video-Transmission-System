@@ -1,7 +1,7 @@
 import tkinter as tk
 from src.python.stream.camera_stream import CameraStream
 from stream_display import StreamDisplay
-from src.python.ai.ai_processor import AIProcessor
+from src.python.ai.processor import AIProcessor
 
 
 def main():
