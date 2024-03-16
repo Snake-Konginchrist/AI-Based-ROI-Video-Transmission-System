@@ -2,14 +2,23 @@ import cv2
 import numpy as np
 
 
-class AIProcessor:
+class Processor:
+    # def __init__(self, model_weights, model_cfg, class_names):
+    #     self.net = cv2.dnn.readNet(model_weights, model_cfg)
+    #     self.classes = open(class_names).read().strip().split('\n')
     def __init__(self, model_weights, model_cfg, class_names):
-        self.net = cv2.dnn.readNet(model_weights, model_cfg)
-        self.classes = open(class_names).read().strip().split('\n')
+        self.net = cv2.dnn.readNetFromDarknet(model_cfg, model_weights)
+        self.classes = []
+        with open(class_names, 'r') as f:
+            self.classes = [line.strip() for line in f.readlines()]
 
     def process_frame(self, frame):
+
+        # 将图像转换为 YOLOv3 需要的格式
         height, width, _ = frame.shape
-        blob = cv2.dnn.blobFromImage(frame, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
+        blob = cv2.dnn.blobFromImage(frame, 1/255.0, (416, 416), (0, 0, 0), True, crop=False)
+
+        # 将 blob 输入到网络中进行预测
         self.net.setInput(blob)
         outs = self.net.forward(self.get_output_layers())
 
@@ -19,11 +28,14 @@ class AIProcessor:
         conf_threshold = 0.5
         nms_threshold = 0.4
 
+        # 解析预测结果
         for out in outs:
             for detection in out:
                 scores = detection[5:]
                 class_id = np.argmax(scores)
                 confidence = scores[class_id]
+
+                # 绘制目标检测结果
                 if confidence > conf_threshold:
                     center_x = int(detection[0] * width)
                     center_y = int(detection[1] * height)
@@ -34,6 +46,14 @@ class AIProcessor:
                     class_ids.append(class_id)
                     confidences.append(float(confidence))
                     boxes.append([x, y, w, h])
+
+                    # x, y, w, h = detection[0:4]
+                    # left = int(x - w / 2)
+                    # top = int(y - h / 2)
+                    # right = int(x + w / 2)
+                    # bottom = int(y + h / 2)
+                    # cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
+                    # cv2.putText(frame, self.classes[class_id], (left, top - 10), cv2
 
         indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, nms_threshold)
 
@@ -58,4 +78,4 @@ class AIProcessor:
         cv2.putText(img, label, (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
 # 使用示例
-# ai_processor = AIProcessor('yolov3.weights', 'yolov3.cfg', 'coco.names')
+# ai_processor = Processor('yolov3.weights', 'yolov3.cfg', 'coco.names')

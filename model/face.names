@@ -1,1 +1,19 @@
+# 人脸检测
+
 face
+
+# 行人检测
+
+pedestrian
+
+# 车辆检测
+
+vehicle
+
+# 其他物体
+
+bicycle
+motorcycle
+bus
+train
+airplane

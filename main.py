@@ -1,7 +1,7 @@
 import tkinter as tk
-from src.python.stream.camera_stream import CameraStream
-from stream_display import StreamDisplay
-from src.python.ai.processor import AIProcessor
+from src.python.stream.camera import CameraStream
+from src.python.stream.display import StreamDisplay
+from src.python.ai.processor import Processor
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
     model_weights = 'model/yolov3.weights'
     model_cfg = 'model/yolov3-face.cfg'
     class_names = 'model/face.names'
-    ai_processor = AIProcessor(model_weights, model_cfg, class_names)
+    ai_processor = Processor(model_weights, model_cfg, class_names)
 
     display = StreamDisplay(root, camera_stream, ai_processor)
 
