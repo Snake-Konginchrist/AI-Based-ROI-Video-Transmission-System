@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (AI-Based-ROI-Video-Transmission-System)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (AI-Based-ROI-Video-Transmission-System)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
 </project>
