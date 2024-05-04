@@ -45,7 +45,9 @@ python main.py
 ## 许可证
 此项目在MIT许可证下发布。
 ## 联系方式
-如有疑问，欢迎邮件联系。邮箱：592413692@qq.com
+- GitHub: [Snake-Konginchrist](https://github.com/Snake-Konginchrist)
+- Gitee: [Snake-Konginchrist](https://gitee.com/Snake-Konginchrist)
+- Email: developer@skstudio.cn（优先）
 ## 致谢
 - 感谢所有为该项目做出贡献的开发者。
 - 特别感谢YOLO算法的开发者和贡献者。
