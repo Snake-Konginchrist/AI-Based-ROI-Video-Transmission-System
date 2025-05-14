@@ -1,4 +1,18 @@
-opencv-python
-numpy
-pillow
+opencv-python>=4.8.0
+opencv-contrib-python>=4.8.0
+numpy>=1.24.0
+pillow>=8.0.0
+requests>=2.25.0
+cffi>=1.14.5
+tqdm>=4.60.0
+matplotlib>=3.4.0
+scikit-image>=0.18.0
+# 网络相关依赖
+flask>=2.0.0
+flask-socketio>=5.0.0
+python-socketio>=5.0.0
+# 可选依赖（如果有CUDA支持）
+# torch>=1.8.0
+# torchvision>=0.9.0
 # 如果有其他依赖，请在此处添加
+ultralytics>=8.0.0
